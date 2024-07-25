@@ -14,9 +14,10 @@ function refreshWeather(response) {
   let timeElement = document.querySelector("#time");
   // step 20 add date and time
   let date = new Date(response.data.time * 1000);
+  // step 22 inject icon
+  let iconElement = document.querySelector("#icon");
 
   //Step 11 console log the weather condition from the api   console.log(response.data.condition.description);
-  console.log(response.data);
 
   cityElement.innerHTML = response.data.city;
 
@@ -34,6 +35,8 @@ function refreshWeather(response) {
 
   //Step 9 - round the temperature number
   temperatureElement.innerHTML = Math.round(temperature);
+
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 }
 
 // Step 21 the function date.getDay display the day of the week through numbers instead of Mon,Tue, etc
