@@ -70,6 +70,24 @@ main {
   display: flex;
 }
 
+.weather-app-icon {
+  font-size: 44px;
+  font-weight: bold;
+  margin-top: 22px;
+  margin-left: 10px;
+}
+
+.weather-app-temperature {
+  font-size: 88px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.weather-app-unit {
+  margin-top: 16px;
+  font-size: 28px;
+}
+
 footer {
   border-top: 1px solid #f9f7fe;
   padding: 30px 0 0 0;
