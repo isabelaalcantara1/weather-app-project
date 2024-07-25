@@ -4,10 +4,57 @@ function refreshWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let temperature = response.data.temperature.current;
   let cityElement = document.querySelector("#city");
+  // Step 12 inject the weather condition inside the description
+  let descriptionElement = document.querySelector("#description");
+  //Step 14 add humidity data
+  let humidityElement = document.querySelector("#humidity");
+  //Step 16 add wind speed data
+  let windSpeedElement = document.querySelector("#wind-speed");
+  //Step 18 add current time data
+  let timeElement = document.querySelector("#time");
+  // step 20 add date and time
+  let date = new Date(response.data.time * 1000);
+
+  //Step 11 console log the weather condition from the api   console.log(response.data.condition.description);
+  console.log(response.data);
 
   cityElement.innerHTML = response.data.city;
+
+  //Step 19 add date and time
+  timeElement.innerHTML = formatDate(date);
+
+  // Step 13 add the weather condition to the innerHTML
+  descriptionElement.innerHTML = response.data.condition.description;
+
+  // Step 15 add humidity data to the innerHTML. Include it in a bucket to show the %, instead of only the number
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+
+  //Step 17 add wind speed to innerHTML - Check console to verify how it is labelled by the API data
+  windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
+
   //Step 9 - round the temperature number
   temperatureElement.innerHTML = Math.round(temperature);
+}
+
+// Step 21 the function date.getDay display the day of the week through numbers instead of Mon,Tue, etc
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${day} ${hours}:${minutes}`;
 }
 
 //Step 3 - Make the API call and update the interface
